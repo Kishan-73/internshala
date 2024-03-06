@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+  }
+
+  header {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul.horizontal-menu {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul.horizontal-menu li {
+    margin-right: 20px;
+}
+
+nav ul.horizontal-menu li.folder {
+    position: relative;
+}
+
+nav ul.horizontal-menu li.folder ul.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    border: 2px solid #969595;
+    padding: 10px;
+}
+
+nav ul.horizontal-menu li.folder:hover ul.dropdown-menu {
+    display: block;
+}
+
+#search-input{
+    padding: 8px 30px;
+    position: relative;
+    right: 20px;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    border: 1px solid #ccc;
+}
+#search-input:focus {
+    border-color: #00f
+}
+
+aside {
+    float: left;
+    width: 260px;
+    background-color: #d0d0d0;
+    position: relative;
+    bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.left-menu h2 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 20px;
+}
+
+.left-menu ul {
+    list-style-type: none;
+}
+
+.left-menu ul li {
+    margin-bottom: 10px;
+}
+
+.left-menu ul li.folder ul {
+    display: none;
+    margin-left: 20px;
+}
+
+.left-menu ul li.folder:hover ul {
+    display: block;
+}
+
+main {
+    padding: 20px;
+    margin-left: 270px;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    clear: both;
+    display: flex;
+    justify-content: center;
+}
+.left-menu ul li a {
+    text-decoration: none; 
+    color: #333;
+}
+.left-menu ul li.space {
+    margin-bottom: 50px; 
+}
+.left-menu ul li button {
+   position: relative;
+   top: 6px;
+}
+
+.horizontal-menu li a {
+    text-decoration: none; 
+    color: #333; 
+    position: relative;
+    left: 450px;
+}
+
+.horizontal-menu li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#item{
+    position: relative;
+    right: 850px;
+}
+#menu{
+    position: relative;
+    left: 20px;
+}
+#search-button{
+    padding: 6px 10px;
+    background-color: rgb(80, 121, 175);
+}
+#selected-count {
+    font-weight: bold;
+    color: #f00;
+}
+input[type="text"].new-row-input {
+border: none;
+outline: none;
+border-bottom: 1px solid #ccc; 
+transition: border-bottom 0.3s ease;
+}
+
+input[type="text"].new-row-input:focus {
+border-bottom: 1px solid blue;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+th, td {
+border: 1px solid #ddd;
+padding: 12px;
+text-align: left;
+font-size: 16px;
+}
+th {
+background-color: #f2f2f2;
+font-weight: bold;
+}
+button {
+padding: 6px 18px;
+background-color: #008CBA;
+border: none;
+border-radius: 3px;
+color: #fff;
+cursor: pointer;
+transition: background-color 0.3s;
+font-size: 14px;
+}
+
+button:hover {
+background-color: #005f6b;
+}
+#add-row, #delete-row {
+margin-top: 10px;
+}
+#menu:hover{
+    color: #00f;
+}
+
+</style>
+    <header>
+        <h1>Innovate Hub</h1>
+        <nav>
+            <h2 id="item">Products</h2>
+            <input type="text" id="search-input" placeholder="Search for...">
+            <button id="search-button" onclick="search()">Search</button>
+
+        </nav>
+    </header>
+    <ul class="horizontal-menu">
+        <li><a href="#">All Brands</a></li>
+        <li><a href="#">Desk</a></li>
+        <li><a href="#">Tags</a></li>
+        <li><a href="#">Sort</a></li>
+        <li><a href="#">Filter</a></li>
+    </ul>
+    <aside>
+        <div class="left-menu">
+            <h2 id="menu">Menu</h2>
+            <ul>
+                <li><a href="#">Design Team</a></li>
+                <li><a href="#">Marketing Team</a></li>
+                <li><a href="#">Development Team</a></li>
+                <li><a href="#">Create Team</a></li>
+                <li class="space"></li>
+                <li><a href="#">Folder</a></li>
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <ul>
+                        <li><a href="#">Sales</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Office</a></li>
+                        <li><a href="#">Legal</a></li>
+                    </ul>
+                    <li><a href="#">Roadmap</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Performance</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Analytics</a></li>
+                </ul>
+                <li class="space"></li>
+                <li><a href="#">Invite Teammates</a></li>
+                <li><a href="#">Help and first steps</a></li>
+                <li>7 days left on trial <button onclick="addBilling()">Add Billing</button></li>
+            </ul>
+        </div>
+    </aside>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Description</th>
+                    <th>Members</th>
+                    <th>Category</th>
+                    <th>Tags</th>
+                    <th>Next Meeting</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Wix</td>
+                    <td>Random description for Wix</td>
+                    <td>John Doe, Jane Smith, Adam Johnson</td>
+                    <td>Website builder, E-commerce, Design</td>
+                    <td>Web development, Online business</td>
+                    <td>April 15, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Shopify</td>
+                    <td>Random description for Shopify</td>
+                    <td>Alice Brown, Bob White, Charlie Green</td>
+                    <td>E-commerce, Online store, Sales</td>
+                    <td>E-commerce platform, Online sales</td>
+                    <td>May 1, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>MailChimp</td>
+                    <td>Random description for MailChimp</td>
+                    <td>David Lee, Emily Davis, Fiona Johnson</td>
+                    <td>Email marketing, Automation, CRM</td>
+                    <td>Email campaigns, Marketing automation</td>
+                    <td>June 10, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>PayPal</td>
+                    <td>Random description for PayPal</td>
+                    <td>George Wilson, Hannah Brown, Ian Clark</td>
+                    <td>Online payments, Payment gateway</td>
+                    <td>Online transactions, Payment processing</td>
+                    <td>July 5, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Disney</td>
+                    <td>Random description for Disney</td>
+                    <td>Kate Miller, Liam Johnson, Megan Thompson</td>
+                    <td>Entertainment, Media, Theme parks</td>
+                    <td>Movies, Animation, Theme park</td>
+                    <td>August 20, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td>Random description for Google</td>
+                    <td>Natalie White, Oliver Clark, Peter Davis</td>
+                    <td>Search engine, Technology, Advertising</td>
+                    <td>Online search, Advertising platform</td>
+                    <td>September 15, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>Random description for Microsoft</td>
+                    <td>Rachel Green, Sam Wilson, Tom Harris</td>
+                    <td>Software, Cloud computing, Technology</td>
+                    <td>Operating systems, Productivity tools</td>
+                    <td>October 10, 2024</td>
+                    <td><input type="checkbox" class="brand-checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Total Brands Selected: <span id="selected-count">0</span></p>
+    <button id="add-row">Add Row</button>
+    <button id="delete-row">Delete Row</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Innovate Hub. All rights reserved.</p>
+    </footer>
+<script>
+
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', () => {
+    const searchText = searchInput.value.toLowerCase();
+});
+
+function addBilling() {
+    alert('Redirecting to the billing page...');
+    var modal = document.getElementById('billingModal');
+    modal.style.display = 'block';
+}
+
+function updateSelectedCount() {
+    var selectedCount = document.querySelectorAll('.brand-checkbox:checked').length;
+    document.getElementById('selected-count').textContent = selectedCount;
+}
+
+
+var checkboxes = document.querySelectorAll('.brand-checkbox');
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('change', function() {
+        updateSelectedCount();
+    });
+});
+    
+
+function search() {
+    console.log("Search button clicked");
+    var searchInput = document.getElementById("search-input").value.trim().toLowerCase();
+
+    
+    if (searchInput === "") {
+        alert("Please enter a search term.");
+        return; 
+    }
+
+    var tableRows = document.querySelectorAll("tbody tr");
+    var found = false; 
+
+    tableRows.forEach(function(row) {
+        var rowData = row.textContent.toLowerCase();
+        if (rowData.includes(searchInput)) {
+            row.style.background = "lightgreen";
+            found = true; 
+        } else {
+            row.style.background = ""; 
+        }
+    });
+
+    if (!found) {
+        alert("No matching records found. Please enter correct details.");
+    }
+}
+
+document.getElementById('add-row').addEventListener('click', function() {
+    var tbody = document.querySelector('tbody');
+    var newRow = document.createElement('tr');
+    newRow.innerHTML = `
+    <td><input type="text" class="new-row-input" placeholder="Brand"></td>
+    <td><input type="text" class="new-row-input" placeholder="Description"></td>
+    <td><input type="text" class="new-row-input" placeholder="Members"></td>
+    <td><input type="text" class="new-row-input" placeholder="Category"></td>
+    <td><input type="text" class="new-row-input" placeholder="Tags"></td>
+    <td><input type="text" class="new-row-input" placeholder="Next Meeting"></td>
+    <td><input type="checkbox" class="brand-checkbox"></td>
+    `;
+    tbody.appendChild(newRow);
+
+
+            var inputFields = newRow.querySelectorAll('input[type="text"]');
+            inputFields.forEach(function(input) {
+                input.addEventListener('input', function() {
+                    if (input.value.trim() !== '') {
+                        input.style.borderBottom = 'none'; 
+                    } else {
+                        input.style.borderBottom = '1px solid #ccc'; 
+                    }
+                });
+                input.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        input.blur(); 
+                    }
+                });
+            });
+        });
+    
+
+    document.getElementById('delete-row').addEventListener('click', function() {
+        var checkboxes = document.querySelectorAll('.brand-checkbox:checked');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.parentNode.parentNode.remove();
+        });
+        updateSelectedCount();
+    });
+
+
+
+    </script>
+</body>
+</html>
